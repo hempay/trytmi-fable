@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.devtools/node_modules/
+
+# Local tooling output (headless-browser screenshots & artifacts)
+.devtools/*.png
+.devtools/package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build output
+dist/
+build/
+.cache/
+
+# Temporary files
+*.tmp
+tmp/
