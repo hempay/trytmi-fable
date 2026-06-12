@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #04100c; --ink: #eafff6; --green: #2ee6a8;
+    --ink-dim: rgba(234,255,246,0.62);
+  }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: var(--bg);
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  /* ambient glows */
+  .glow-a {
+    position: absolute; width: 900px; height: 900px;
+    right: -260px; bottom: -380px;
+    background: radial-gradient(circle, rgba(46,230,168,0.22), transparent 60%);
+  }
+  .glow-b {
+    position: absolute; width: 700px; height: 700px;
+    left: -240px; top: -300px;
+    background: radial-gradient(circle, rgba(46,230,168,0.10), transparent 60%);
+  }
+  /* dotted wave field, bottom-right */
+  .dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(46,230,168,0.5) 1.4px, transparent 1.6px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 100% 100%, #000 10%, transparent 62%);
+            mask-image: radial-gradient(ellipse 70% 80% at 100% 100%, #000 10%, transparent 62%);
+    opacity: 0.85;
+  }
+  /* subtle vignette in place of heavy grain (keeps the PNG compressible) */
+  .grain {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 90% 90% at 50% 45%, transparent 55%, rgba(0,0,0,0.35));
+  }
+  .frame {
+    position: absolute; inset: 44px;
+    border: 1px solid rgba(46,230,168,0.16);
+    border-radius: 28px;
+  }
+  .wrap {
+    position: relative; z-index: 5;
+    height: 100%;
+    padding: 92px 88px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  /* header row */
+  .top { display: flex; align-items: center; gap: 16px; }
+  .pulse {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 10px rgba(46,230,168,0.14), 0 0 24px rgba(46,230,168,0.7);
+  }
+  .brand {
+    font-weight: 700; font-size: 38px; letter-spacing: -0.02em;
+  }
+  .brand span { color: var(--green); }
+  .eyebrow {
+    margin-left: auto;
+    font-size: 18px; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--ink-dim); font-weight: 500;
+  }
+  /* center title */
+  .title {
+    font-weight: 700; font-size: 132px; line-height: 0.96; letter-spacing: -0.04em;
+  }
+  .title em {
+    font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
+    color: var(--green);
+  }
+  .title .dot { color: var(--green); }
+  .sub {
+    margin-top: 30px; max-width: 760px;
+    font-size: 27px; line-height: 1.45; color: var(--ink-dim); font-weight: 400;
+  }
+  /* footer stats */
+  .stats { display: flex; gap: 64px; align-items: flex-end; }
+  .stat strong {
+    display: block; font-size: 40px; font-weight: 600; color: var(--green);
+    letter-spacing: -0.02em;
+  }
+  .stat span {
+    font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(234,255,246,0.45);
+  }
+  .url {
+    margin-left: auto; font-size: 22px; color: var(--ink-dim); font-weight: 500;
+    letter-spacing: 0.02em; align-self: center;
+  }
+  /* ECG line accent */
+  .ecg {
+    position: absolute; left: 88px; right: 88px; bottom: 232px; z-index: 4;
+    height: 70px; color: rgba(46,230,168,0.55);
+  }
+  .ecg svg { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <div class="dots"></div>
+  <div class="frame"></div>
+
+  <div class="ecg">
+    <svg viewBox="0 0 1024 70" preserveAspectRatio="none" fill="none">
+      <path d="M0 35 H360 L384 35 396 8 416 62 432 22 444 35 H650 L672 35 682 16 696 56 706 35 H1024"
+            stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="top">
+      <span class="pulse"></span>
+      <span class="brand">Trytmi<span>.</span></span>
+      <span class="eyebrow">Health Management System</span>
+    </div>
+
+    <div>
+      <div class="title">Your<br><em>Risen</em> Health<span class="dot">.</span></div>
+      <p class="sub">A world-class health management &amp; appointment platform — marvellously built to save lives.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>99.999%</strong><span>Uptime SLA</span></div>
+      <div class="stat"><strong>2,000+</strong><span>Features</span></div>
+      <div class="stat"><strong>150+</strong><span>Languages</span></div>
+      <div class="url">trytmi.health</div>
+    </div>
+  </div>
+
+  <div class="grain"></div>
+</body>
+</html>
